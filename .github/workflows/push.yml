@@ -11,10 +11,8 @@ jobs:
         run: |
           output=$(docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/)
           echo ${output}
-          if [ "$output" != "Hello" ]; then
-            echo "YES" 
+          if [ "$output" != "Hello from root" ]; then
+            echo "No response from http://localhost:5000" 
             exit 1
-          else
-            echo "NO" 
           fi
         
