@@ -9,10 +9,8 @@ jobs:
         run: docker-compose up -d
       - name: Test
         run: |
-          echo "One"
-          output=$(curl https://www.keycdn.com)
-          echo ${output}
           output=$(curl -s --retry 10 --retry-connrefused http://localhost:5000/)
+          echo ${output}
           if [ "$output" != "Hello" ]; then
             echo "YES" 
             exit 1
