@@ -3,8 +3,6 @@ services:
   web:
     container_name: app
     build: .
-    ports:
-      - "5000:5000"
   redis:
     container_name: redis
     image: "redis:alpine"
