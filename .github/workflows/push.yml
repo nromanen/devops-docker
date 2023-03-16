@@ -6,7 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: docker-compose up -d
+        run: |
+          docker-compose up -d
+          output=$(curl -s --retry 10 --retry-connrefused http://localhost:5000/)
+          echo ${output}
       - name: Test
         run: |
           output=$(curl -s --retry 10 --retry-connrefused http://localhost:5000/)
