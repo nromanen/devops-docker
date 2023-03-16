@@ -6,4 +6,4 @@ RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["flask", "run", "--host=$FLASK_RUN_HOST"]
+CMD ["flask", "run", "--host=10.1.3.0"]
