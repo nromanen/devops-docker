@@ -11,4 +11,9 @@ jobs:
         run: |
           output=$(docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/)
           echo ${output}
+          if [ "$output" == "Hello" ]; then
+            echo "secretspresent=NO" >> $GITHUB_OUTPUT
+          else
+            echo "secretspresent=YES" >> $GITHUB_OUTPUT
+          fi
         
