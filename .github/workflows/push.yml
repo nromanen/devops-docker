@@ -10,10 +10,9 @@ jobs:
       - name: Test
         run: |
           echo "One"
-          output=$(curl -s --retry 10 --retry-connrefused http://localhost:5000/)
           output=$(curl https://www.keycdn.com)
-
           echo ${output}
+          output=$(curl -s --retry 10 --retry-connrefused http://localhost:5000/)
           if [ "$output" != "Hello" ]; then
             echo "YES" 
             exit 1
